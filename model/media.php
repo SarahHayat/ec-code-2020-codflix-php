@@ -134,32 +134,10 @@ class Media
         return $req->fetchAll();
 
     }
-    public static function getMediaByFilm(){
-        // Open database connection
-        $db = init_db();
-
-        $req = $db->query('SELECT * from media join genre on media.genre_id = genre.id WHERE media.type = "film"');
 
 
-        // Close databse connection
-        $db = null;
-
-        return $req->fetchAll();
-    }
-
-    public static function getMediaBySerie(){
-        // Open database connection
-        $db = init_db();
-
-        $req = $db->query('SELECT * from media join genre on media.genre_id = genre.id WHERE media.type = "serie"');
-
-
-        // Close databse connection
-        $db = null;
-
-        return $req->fetchAll();
-    }
-    public static function getMediaById($id){
+    public static function getMediaById($id)
+    {
         // Open database connection
         $db = init_db();
 
@@ -171,35 +149,48 @@ class Media
 
         return $req->fetchAll();
     }
-    public static function getSerieDetail($id){
+
+
+    public static function getSaisonByMedia($id_media)
+    {
+// Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('SELECT DISTINCT saisons.`name_saison`, saisons.id_saison FROM saisons join media ON saisons.media_id = media.id where media.id= ?');
+        $req->execute(array($id_media));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
+
+    }
+
+    public static function getSerieEpisodeBySaison($id_saison, $id_media)
+    {
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT DISTINCT saisons.`name_saison`, episodes.name_episode FROM saisons join episodes ON saisons.id_saison = episodes.saison_id JOIN media ON media.id = saisons.media_id where media.id=? ');
-        $req->execute(array($id));
+        $req = $db->prepare('SELECT * from episodes JOIN saisons ON saisons.id_saison = episodes.saison_id join media on media.id = saisons.media_id WHERE episodes.saison_id = ? AND media.id = ?');
+        $req->execute(array($id_saison, $id_media));
 
         // Close databse connection
         $db = null;
 
         return $req->fetchAll();
     }
-    public static function getSerieEpisodeBySaison($id_media, $id_saison, $id_episode){
+
+    public static function getSummaryByEpisode($id_episode)
+    {
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * from episodes JOIN saisons ON saisons.id_saison = episodes-.saison_id  join media on media.id = saisons.media_id 
-WHERE episodes.media_id = :media_id AND episodes.saison_id = :saison_id AND episodes.id_episode = :episode_id');
-        $req->execute(array(
-            'media_id' => $id_media,
-            'saison_id' => $id_saison,
-            'episode_id' => $id_episode,
-        ));
+        $req = $db->prepare('SELECT * from episodes WHERE id_episode = ?');
+        $req->execute(array($id_episode));
 
         // Close databse connection
         $db = null;
 
         return $req->fetchAll();
     }
-
-
 }
