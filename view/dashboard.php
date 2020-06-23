@@ -9,9 +9,9 @@
         <h2 class="title">Bienvenue</h2>
         <div class="sidebar-menu">
           <ul>
-            <li class="active"><a href="index.php">Médias</a></li>
+            <li class="active"><a href="../index.php">Médias</a></li>
             <li><a href="#">Nous contacter</a></li>
-            <li><a href="index.php?action=logout">Me déconnecter</a></li>
+            <li><a href="../index.php?action=logout">Me déconnecter</a></li>
           </ul>
         </div>
       </nav>
@@ -34,10 +34,10 @@
       </div>
     </div>
 
-    <script src="public/lib/jquery/js/jquery-3.5.0.min"></script>
-    <script src="public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../public/lib/jquery/js/jquery-3.5.0.min"></script>
+    <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="public/js/script.js"></script>
+    <script src="../public/js/script.js"></script>
   </body>
 
 </html>

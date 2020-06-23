@@ -19,5 +19,20 @@ background-color: #1b1e21;
     font-weight: bold;
 }
 
+.video_episode{
+    text-align: center;
+    padding-bottom: 3%;
 
+}
+iframe{
+    border: solid darkred 2px;
+}
+.video_summary{
+    background-color: #1b1e21;
+    color: whitesmoke;
+    padding: 2%;
+}
 
+.video_summary div{
+    padding: 2%;
+}

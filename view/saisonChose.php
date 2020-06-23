@@ -15,16 +15,15 @@ require("../model/media.php");
 <div id="contenue">
 
 
-    <div>
+    <div class="video_summary">
         <select name="episode" id="episode" onchange="choixEpisode()">
             <option value="NULL"> Choisir un episode</option>
             <?php
             $saison_id = $_GET['saison'];
             $media_id = $_GET['media'];
-            if (isset($saison_id,$media_id )) {
+            if (isset($saison_id, $media_id)) {
                 $episodes = Media::getSerieEpisodeBySaison($saison_id, $media_id);
                 foreach ($episodes as $episode): ?>
-                    ?>
 
                     <option value="<?= $episode['id_episode'] ?>"
                             name="episode"><?= $episode['name_episode'] ?></option>
@@ -35,12 +34,16 @@ require("../model/media.php");
             ?>
         </select>
     </div>
-    <div>
+    <div class="video_summary">
         <?php
         if (isset($_GET['episode'])) {
             $summary = Media::getSummaryByEpisode($_GET['episode']);
             foreach ($summary as $item) {
                 ?>
+                <div class="video_episode">
+                <iframe height="250px" width="450px" allowfullscreen="" frameborder="0" allow="picture-in-picture"
+                        src="<?= $item['url_episode']; ?>"></iframe>
+                </div>
                 <div> <?= $item['summary_episode'] ?></div>
                 <?php
             }

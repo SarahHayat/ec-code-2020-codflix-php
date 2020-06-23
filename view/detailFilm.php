@@ -18,8 +18,8 @@ require ("../model/media.php");
     $medias = Media::getMediaById($id_media);
     foreach ($medias as $media):
     ?>
-    <div >
-       <div> <iframe allowfullscreen="" frameborder="0"
+    <div class="video_summary">
+       <div class="video_episode"> <iframe  height="250px" width="450px" allowfullscreen="" frameborder="0"
                 src="<?= $media['trailer_url']; ?>"></iframe></div>
         <div> Title : <?=  $media['title']?></div>
         <div> Genre : <?=  $media['name']?></div>

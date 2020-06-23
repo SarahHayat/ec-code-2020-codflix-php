@@ -22,20 +22,21 @@ require("../model/media.php");
     <nav>
         <ul id="menu">
             <li><a id="presentation">PRESENTATION</a></li>
-            <li><a href="detailSaison.php?media=<?=$id_media?>" id="episodes">EPISODES</a></li>
+            <li><a href="detailSaison.php?media=<?= $id_media ?>" id="episodes">EPISODES</a></li>
         </ul>
     </nav>
+    <div class="video_summary"
     <?php
     $summary = Media::getSaisonByMedia($id_media);
     foreach ($summary as $item) {
         ?>
-        <div id="summary_saison"> <?= $item['summary_saison'] ?></div>
+        <div id="summary_saison"> <?= $item['summary'] ?></div>
         <?php
     }
     ?>
 </div>
 </div>
-</div>
+
 <script src="../public/js/media.js"></script>
 
 

@@ -26,7 +26,7 @@ require("../model/media.php");
             </ul>
         </nav>
 
-        <div id="contenu_presentation">
+        <div id="contenu_presentation" class="video_summary">
             <select name="saison" id="saison" onchange="myChoices()">
                 <option value="NULL"> Choisir une saison</option>
             <?php

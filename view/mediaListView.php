@@ -35,7 +35,7 @@
                     <a class="item" href="view/detailFilm.php?media=<?= $media['id']; ?>">
                         <div class="video">
                             <div>
-                                <iframe allowfullscreen="" frameborder="0"
+                                <iframe allowfullscreen="" frameborder="0" allow="picture-in-picture"
                                         src="<?= $media['trailer_url']; ?>"></iframe>
                             </div>
                         </div>
