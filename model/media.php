@@ -156,7 +156,7 @@ class Media
 // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT DISTINCT saisons.`name_saison`, saisons.id_saison FROM saisons join media ON saisons.media_id = media.id where media.id= ?');
+        $req = $db->prepare('SELECT DISTINCT saisons.`name_saison`, saisons.id_saison, saisons.summary_saison FROM saisons join media ON saisons.media_id = media.id where media.id= ?');
         $req->execute(array($id_media));
 
         // Close databse connection

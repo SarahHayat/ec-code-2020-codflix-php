@@ -19,8 +19,10 @@ require("../model/media.php");
         <select name="episode" id="episode" onchange="choixEpisode()">
             <option value="NULL"> Choisir un episode</option>
             <?php
-            if (isset($_GET['saison'], $_GET['media'])) {
-                $episodes = Media::getSerieEpisodeBySaison($_GET['saison'], $_GET['media']);
+            $saison_id = $_GET['saison'];
+            $media_id = $_GET['media'];
+            if (isset($saison_id,$media_id )) {
+                $episodes = Media::getSerieEpisodeBySaison($saison_id, $media_id);
                 foreach ($episodes as $episode): ?>
                     ?>
 

@@ -54,7 +54,7 @@
 
             foreach ($medias as $media) {
                 if ($media['type'] == "serie") { ?>
-                    <a class="item" href="view/detailSerie.php?media=<?= $media['id']; ?>">
+                    <a class="item" href="view/detailSaison.php?media=<?= $media['id']; ?>">
                         <div class="video">
                             <div>
                                 <iframe allowfullscreen="" frameborder="0"

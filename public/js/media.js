@@ -1,8 +1,8 @@
 function presentation() {
     console.log('presentation');
     var contenu_presentation = document.getElementById("contenu_presentation");
-    var presentation = document.getElementById('presentation');
-    presentation.addEventListener('click', function () {
+    var episodes = document.getElementById('episodes');
+    episodes.addEventListener('click', function () {
         if (getComputedStyle(contenu_presentation).display != "none") {
             contenu_presentation.style.display = "none";
         } else {
@@ -14,7 +14,7 @@ function presentation() {
 
 function showDetail() {
     var name = document.getElementById('name');
-    var summary = document.getElementById('summary');
+    var summary_saison = document.getElementById('summary_saison');
     if (getComputedStyle(summary).display != "none") {
         summary.style.display = "none";
     } else {

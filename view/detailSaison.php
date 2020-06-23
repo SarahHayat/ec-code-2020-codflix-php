@@ -18,12 +18,14 @@ require("../model/media.php");
         $id_media = $_GET['media'];
         ?>
         <input id="id_media" type="hidden" value="<?= $id_media ?>">
+
         <nav>
             <ul id="menu">
-                <li><a id="presentation">PRESENTATION</a></li>
+                <li><a href="presentationSerie.php?media=<?=$id_media?>" id="presentation">PRESENTATION</a></li>
                 <li><a id="episodes">EPISODES</a></li>
             </ul>
         </nav>
+
         <div id="contenu_presentation">
             <select name="saison" id="saison" onchange="myChoices()">
                 <option value="NULL"> Choisir une saison</option>
