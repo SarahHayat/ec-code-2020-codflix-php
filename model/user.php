@@ -83,11 +83,29 @@ class User {
       'email'     => $this->getEmail(),
       'password'  => $this->getPassword()
     ));
+      // Close databse connection
+      $db = null;
 
-    // Close databse connection
-    $db = null;
+      $this->sendMail();
 
   }
+
+      /***********************************
+       * -------- CREATE NEW USER ---------
+       ************************************/
+      public function sendMail()
+      {
+
+          ini_set('display_errors', 1);
+          error_reporting(E_ALL);
+          $from = "codflix@support.com";
+          $to = $this->getEmail();
+          $subject = "Confirmation compte";
+          $message = "Veuillez cliquez sur le lien suivant : " + "http://codflix/index.php";
+          $headers = "From: " . $from;
+          mail($to, $subject, $message, $headers);
+      }
+
 
   /**************************************
   * -------- GET USER DATA BY ID --------

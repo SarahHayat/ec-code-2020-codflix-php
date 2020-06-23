@@ -2,8 +2,10 @@
 * Home page rules
 **********/
 
+
+
 .media-list {
-    display: flex;
+
     flex-wrap: wrap;
 
     margin-bottom: 40px;
@@ -16,7 +18,9 @@
     background: #1f1f1f;
 
     padding-bottom: 25px;
+
 }
+
 
 .media-list .item .video {
     width: 100%;
@@ -50,6 +54,9 @@
     color: #fff;
     padding: 8px 20px;
 
+}
+.media-list .list {
+    display: flex;
 }
 
 @media screen and (max-width: 768px) {

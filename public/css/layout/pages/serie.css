@@ -1,0 +1,28 @@
+
+
+.media-list ul {
+    display: flex;
+}
+
+#menu {
+background-color: #1b1e21;
+    list-style: none;
+    color: #ac0909;
+
+}
+
+#menu li {
+   margin: 3%;
+}
+
+#menu li:hover{
+    font-weight: bold;
+}
+
+#contenu_presentation{
+    display: none;
+}
+
+#summary {
+    display: none;
+}

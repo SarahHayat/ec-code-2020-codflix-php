@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Cod'Flix</title>
 
-    <link href="public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="public/lib/font-awesome/css/all.min.css" rel="stylesheet" />
-
-    <link href="public/css/partials/partials.css" rel="stylesheet" />
-    <link href="public/css/layout/layout.css" rel="stylesheet" />
-  </head>
 
 
   <body>
@@ -18,7 +9,7 @@
         <h2 class="title">Bienvenue</h2>
         <div class="sidebar-menu">
           <ul>
-            <li class="active"><a href="/CodFlix/">Médias</a></li>
+            <li class="active"><a href="index.php">Médias</a></li>
             <li><a href="#">Nous contacter</a></li>
             <li><a href="index.php?action=logout">Me déconnecter</a></li>
           </ul>
