@@ -194,7 +194,7 @@ class Media
         return $req->fetchAll();
     }
 
-    public function setDurationMedia($time, $id_media){
+    public static function setDurationMedia($time, $id_media){
         // Open database connection
         $db = init_db();
 
@@ -206,11 +206,30 @@ class Media
 
         return $req->fetchAll();
     }
-    public function getHistoryByUser($id_user){
+
+    public static function setHistory($id_user, $id_media){
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * FROM history where user_id = ?');
+        $req = $db->prepare('INSERT INTO history(user_id, media_id, start_date, finish_date)VALUES( ?, ?, NOW(), NOW()+1)');
+        $req->execute(array($id_user, $id_media));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
+    }
+    public static function getHistoryByUser($id_user){
+        // Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('SELECT * 
+FROM history 
+join users
+on users.id = history.user_id
+JOIN media
+ON media.id = history.media_id
+where history.user_id = ? order by history.start_date asc');
         $req->execute(array($id_user));
 
         // Close databse connection

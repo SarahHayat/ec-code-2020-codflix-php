@@ -18,7 +18,7 @@
         $id_user = $_SESSION['user_id'];
         $historys = Media::getHistoryByUser($id_user);
         foreach ($historys as $history) { ?>
-         <div > </div>
+         <div><?= "À " .$history["start_date"] . ", vous avez regardé " . $history['title'] . " ."?></div>
         <?php
         }
         ?>

@@ -1,4 +1,6 @@
-<?php ob_start();
+<?php
+session_start();
+ob_start();
 require("../model/media.php");
 ?>
     <head>
@@ -12,10 +14,15 @@ require("../model/media.php");
         <link href="../public/css/layout/layout.css" rel="stylesheet"/>
 
     </head>
+<?php
+$id_media = $_GET['media'];
+Media::setHistory($_SESSION['user_id'], $id_media);
+?>
+
 
     <div class="media-list">
         <?php
-        $id_media = $_GET['media'];
+
         ?>
         <input id="id_media" type="hidden" value="<?= $id_media ?>">
 

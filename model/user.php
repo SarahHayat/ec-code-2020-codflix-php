@@ -70,7 +70,7 @@ class User {
     $db   = init_db();
 
     // Check if email already exist
-    $req  = $db->prepare( "SELECT * FROM user WHERE email = ?" );
+    $req  = $db->prepare( "SELECT * FROM users WHERE email = ?" );
     $req->execute( array( $this->getEmail() ) );
 
     if( $req->rowCount() > 0 ) throw new Exception( "Email ou mot de passe incorrect" );
@@ -78,7 +78,7 @@ class User {
     // Insert new user
     $req->closeCursor();
 
-    $req  = $db->prepare( "INSERT INTO user ( email, password ) VALUES ( :email, :password )" );
+    $req  = $db->prepare( "INSERT INTO users ( email, password ) VALUES ( :email, :password )" );
     $req->execute( array(
       'email'     => $this->getEmail(),
       'password'  => $this->getPassword()
@@ -116,7 +116,7 @@ class User {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM user WHERE id = ?" );
+    $req  = $db->prepare( "SELECT * FROM users WHERE id = ?" );
     $req->execute( array( $id ));
 
     // Close databse connection
@@ -134,7 +134,7 @@ class User {
     // Open database connection
     $db   = init_db();
 
-    $req  = $db->prepare( "SELECT * FROM user WHERE email = ?" );
+    $req  = $db->prepare( "SELECT * FROM users WHERE email = ?" );
     $req->execute( array( $this->getEmail() ));
 
     // Close databse connection
