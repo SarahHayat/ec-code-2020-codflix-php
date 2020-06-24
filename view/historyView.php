@@ -12,7 +12,20 @@
 
 
 <div class="media-list">
-    test
+    <h1>HISTORIQUE</h1>
+    <div>
+        <?php
+        $id_user = $_SESSION['user_id'];
+        $historys = Media::getHistoryByUser($id_user);
+        foreach ($historys as $history) { ?>
+         <div > </div>
+        <?php
+        }
+        ?>
+        <ul>
+
+        </ul>
+    </div>
 </div>
 
 

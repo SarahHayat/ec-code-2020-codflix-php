@@ -40,3 +40,16 @@ iframe{
 #summary_saison{
     color: white;
 }
+.list_episode{
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+}
+.description{
+    width: 300px;
+    text-align: justify;
+    color: white;
+
+}

@@ -26,7 +26,7 @@
     </div>
 </div>
 <?php
-$search = isset($_GET['title']) ? $_GET['title'] : null;
+$search = isset($_GET['title']) ? htmlspecialchars($_GET['title']) : null;
 $searchs = Media::filterMedias($search);
 
 
@@ -50,7 +50,7 @@ if (isset($search) && strlen ($search)>0) {
                         <input type="hidden" value="" name="time" id="time">
                     </form>
 
-                    <div class="title"><?= $media['title'] . "(". $media['release_date'].")" ?></div>
+                    <div class="title"><?= $media['title']." (" .$media['release_date'].")"?></div>
                     <div class="title"><?= $media['time_media']?></div>
                 </a>
                 <?php
@@ -79,7 +79,8 @@ if (isset($search) && strlen ($search)>0) {
                                         src="<?= $media['trailer_url']; ?>"></iframe>
                             </div>
 
-                        <div class="title"><?= $media['title'] . "(". $media['release_date'].")" ?></div>
+                        <div class="title"><?= $media['title']?></div>
+
                         <div class="title"><?= $media['time_media']?></div>
 
                     </a>
@@ -103,7 +104,7 @@ if (isset($search) && strlen ($search)>0) {
                                         src="<?= $media['trailer_url']; ?>"></iframe>
                             </div>
 
-                        <div class="title"><?= $media['title'] . "(". $media['release_date'].")" ?></div>
+                        <div class="title"><?= $media['title'] ?></div>
                         <div class="title"><?= $media['time_media']?></div>
 
                     </a>

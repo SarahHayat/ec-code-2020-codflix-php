@@ -171,7 +171,7 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * from episodes JOIN saisons ON saisons.id_saison = episodes.saison_id join media on media.id = saisons.media_id WHERE episodes.saison_id = ? AND media.id = ?');
+        $req = $db->prepare('SELECT episodes.*, saisons.* , DATE_FORMAT(episodes.time_episode, "%Hh%i") as time_media from episodes JOIN saisons ON saisons.id_saison = episodes.saison_id join media on media.id = saisons.media_id WHERE episodes.saison_id = ? AND media.id = ?');
         $req->execute(array($id_saison, $id_media));
 
         // Close databse connection
@@ -206,4 +206,17 @@ class Media
 
         return $req->fetchAll();
     }
+    public function getHistoryByUser($id_user){
+        // Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('SELECT * FROM history where user_id = ?');
+        $req->execute(array($id_user));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
+    }
+
 }
