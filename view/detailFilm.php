@@ -23,6 +23,7 @@ require ("../model/media.php");
                 src="<?= $media['trailer_url']; ?>"></iframe></div>
         <div> Title : <?=  $media['title']?></div>
         <div> Genre : <?=  $media['name']?></div>
+        <div> Durée : <?=  $media['time_media']?></div>
         <div> Release Date : <?=  $media['release_date']?></div>
         <div> Summary : <?=  $media['summary']?></div>
 

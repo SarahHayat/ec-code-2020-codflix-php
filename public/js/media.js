@@ -29,18 +29,14 @@ function myChoices() {
     var media = document.getElementById('id_media').value;
     if (saison === "NULL") {
         document.getElementById("contenue").innerHTML = "";
-        console.log("null" + saison);
         return;
     } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
-            console.log("saison : " + saison + " " + media);
             if (this.readyState == 3) {
                 if (this.status == 200) {
-                    console.log("ordre" + saison);
                     document.getElementById("contenue").innerHTML = this.responseText;
                 } else {
-                    console.log("else");
                 }
             }
         };
@@ -52,15 +48,12 @@ function choixEpisode() {
     var episode = document.getElementById("episode").value;
     if (saison === "NULL") {
         document.getElementById("contenue").innerHTML = "";
-        console.log("null" + episode);
         return;
     } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
-            console.log("episode : " + episode );
             if (this.readyState == 3) {
                 if (this.status == 200) {
-                    console.log("episode" + episode);
                     document.getElementById("contenue").innerHTML = this.responseText;
                 } else {
                     console.log("else");
@@ -71,5 +64,34 @@ function choixEpisode() {
         xmlhttp.send();
     }
 }
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+function onYouTubeIframeAPIReady() {
+    console.log("yt");
+    player = new YT.Player('player', {
+        height: '160',
+        width: '304',
+        videoId: 'MIt2n6E7CUg',
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    var time = document.getElementById('time');
+    var duration = player.getDuration();
+    time.value = duration;
+    console.log("time value : "+ time.value);
+
+    console.log("time : " + duration);
+
+}
+
 
 presentation();
+

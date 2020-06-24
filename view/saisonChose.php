@@ -44,6 +44,8 @@ require("../model/media.php");
                 <iframe height="250px" width="450px" allowfullscreen="" frameborder="0" allow="picture-in-picture"
                         src="<?= $item['url_episode']; ?>"></iframe>
                 </div>
+                <div><?= $item['name_episode'] ?></div>
+                <div> Durée : <?= $item['time_episode'] ?></div>
                 <div> <?= $item['summary_episode'] ?></div>
                 <?php
             }

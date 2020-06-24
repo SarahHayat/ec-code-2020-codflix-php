@@ -110,7 +110,7 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare("SELECT * FROM media WHERE title LIKE ? ORDER BY release_date DESC");
+        $req = $db->prepare('SELECT media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media FROM media WHERE title LIKE ? ORDER BY release_date DESC');
         $req->execute(array('%'.$title.'%'));
 
         // Close databse connection
@@ -126,7 +126,7 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->query('SELECT * from media WHERE status = "available"');
+        $req = $db->query('SELECT media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media from media WHERE status = "available"');
 
         // Close databse connection
         $db = null;
@@ -141,7 +141,7 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * from media join genre on media.genre_id = genre.id WHERE media.id = ?');
+        $req = $db->prepare('SELECT genre.*, media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media from media join genre on media.genre_id = genre.id WHERE media.id = ?');
         $req->execute(array($id));
 
         // Close databse connection
@@ -185,8 +185,21 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * from episodes WHERE id_episode = ?');
+        $req = $db->prepare('SELECT episodes.*,  DATE_FORMAT(episodes.time_episode, "%Hh%i") as time_episode from episodes WHERE id_episode = ?');
         $req->execute(array($id_episode));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
+    }
+
+    public function setDurationMedia($time, $id_media){
+        // Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('UPDATE media SET duration= ? WHERE media.id = ?');
+        $req->execute(array($time, $id_media));
 
         // Close databse connection
         $db = null;
