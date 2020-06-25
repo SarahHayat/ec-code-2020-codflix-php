@@ -7,7 +7,7 @@
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar">
         <h2 class="title">Bienvenue</h2>
-        <div class="sidebar-menu">
+        <div class="sidebar-menu d-md">
           <ul>
             <li class="active"><a href="index.php?action=media">Médias</a></li>
               <li><a href="index.php?action=history">Historique</a></li>
@@ -26,6 +26,17 @@
               <i class="fas fa-bars"></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
+              <nav id="sidebar ">
+                  <h2 class="title">Bienvenue</h2>
+                  <div class="sidebar-menu d-md">
+                      <ul>
+                          <li class="active"><a href="index.php?action=media">Médias</a></li>
+                          <li><a href="index.php?action=history">Historique</a></li>
+                          <li><a href="#">Nous contacter</a></li>
+                          <li><a href="index.php?action=logout">Me déconnecter</a></li>
+                      </ul>
+                  </div>
+              </nav>
           </div>
         </div>
         <div class="content p-4">
