@@ -1,5 +1,4 @@
 <?php ob_start();
-//require("../model/media.php");
 ?>
 <head>
     <meta charset="utf-8"/>
@@ -13,7 +12,7 @@
 
 </head>
 <?php
-$id_media = $_GET['media'];
+$id_media = isset($_GET['media']) ? $_GET['media'] : null;
 ?>
 
 <div class="media-list">

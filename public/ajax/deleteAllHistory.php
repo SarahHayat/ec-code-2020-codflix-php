@@ -1,6 +1,6 @@
 <?php
 
-Media::deleteAllHistory();
+History::deleteAllHistory();
 
 ?>
 <script>

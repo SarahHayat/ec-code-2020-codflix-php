@@ -1,7 +1,5 @@
 <?php
-//session_start();
 ob_start();
-//require ("../model/media.php");
 ?>
 <head>
     <meta charset="utf-8"/>
@@ -14,9 +12,10 @@ ob_start();
     <link href="public/css/layout/layout.css" rel="stylesheet"/>
 </head>
 <?php
-$id_media = $_GET['media'];
 
-Media::setHistory($_SESSION['user_id'], $id_media);
+$id_media = isset($_GET['media']) ? $_GET['media'] : null;
+$id_saison = isset($_GET['saison']) ? $_GET['saison'] : null;
+History::setHistory($_SESSION['user_id'], $id_media, $id_saison);
 ?>
 
 <div class="media-list">

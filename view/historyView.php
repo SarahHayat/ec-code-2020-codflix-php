@@ -22,12 +22,12 @@ ob_start(); ?>
     <div class="contenu_history">
         <?php
         $id_user = $_SESSION['user_id'];
-        $historys = Media::getHistoryByUser($id_user);
+        $historys = History::getHistoryByUser($id_user);
         foreach ($historys as $history) {
             $id_history = $history['id_history'];
             ?>
             <div class="detail-history">
-            <div><?= "Le " . $history["start_date"] . ", vous avez regardé " . $history['title'] . " ." ?></div>
+            <div><?= "Le " . $history["start_date"] . ", vous avez regardé " . $history['title'] . "  " .$history['name_saison']  ?></div>
             <a href="index.php?action=deleteDistinct&id_history=<?=$id_history ?>">supprimer</a>
             </div>
             <?php

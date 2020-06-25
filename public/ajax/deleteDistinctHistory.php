@@ -2,7 +2,7 @@
 
 $id_history = $_GET['id_history'];
 
-Media::deleteDistinctHistory($id_history);
+History::deleteDistinctHistory($id_history);
 
 //header('Location : index.php?action=history');
 ?>

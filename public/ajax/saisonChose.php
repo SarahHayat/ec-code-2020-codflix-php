@@ -1,6 +1,5 @@
 <?php
 ob_start();
-//require("../model/media.php");
 ?>
 <head>
     <meta charset="utf-8"/>
@@ -14,11 +13,12 @@ ob_start();
 
 </head>
 <?php
-$saison_id = $_GET['saison'];
 
-$id_media = $_GET['media'];
+$id_media = isset($_GET['media']) ? $_GET['media'] : null;
+$saison_id = isset($_GET['saison']) ? $_GET['saison'] : null;
 
-Media::setHistory($_SESSION['user_id'], $id_media);
+
+History::setHistory($_SESSION['user_id'], $id_media, $saison_id);
 ?>
 <div id="contenue">
 

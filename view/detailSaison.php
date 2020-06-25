@@ -1,7 +1,7 @@
 <?php
-//session_start();
+
 ob_start();
-//require("../model/media.php");
+
 ?>
     <head>
         <meta charset="utf-8"/>
@@ -15,8 +15,8 @@ ob_start();
 
     </head>
 <?php
-$id_media = $_GET['media'];
-Media::setHistory($_SESSION['user_id'], $id_media);
+$id_media = isset($_GET['media']) ? $_GET['media'] : null;
+$id_saison= isset($_GET['saison']) ? $_GET['saison'] : null;
 ?>
 
 
