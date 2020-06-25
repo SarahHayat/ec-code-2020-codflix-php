@@ -122,7 +122,7 @@ class History
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT * FROM history left join users on users.id = history.user_id left JOIN media ON media.id = history.media_id left JOIN saisons ON saisons.id_saison = history.saison_id where history.user_id = ? order by history.start_date asc');
+        $req = $db->prepare('SELECT * FROM history left join users on users.id = history.user_id left JOIN media ON media.id = history.media_id left JOIN saisons ON saisons.id_saison = history.saison_id where history.user_id = ? order by history.start_date desc LIMIT 20');
         $req->execute(array($id_user));
 
         // Close databse connection

@@ -4,6 +4,10 @@
     display: flex;
 }
 
+.media-list h1{
+    color: white;
+}
+
 #menu {
 background-color: #1b1e21;
     list-style: none;
@@ -11,12 +15,18 @@ background-color: #1b1e21;
 
 }
 
+#menu a{
+    color: darkred;
+    font-weight: bold;
+    font-size: larger;
+}
+
 #menu li {
    margin: 3%;
 }
 
 #menu li:hover{
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 .video_episode{
@@ -35,6 +45,10 @@ iframe{
 
 .video_summary div{
     padding: 2%;
+}
+
+.video_summary span{
+    color: red;
 }
 
 #summary_saison{
@@ -84,5 +98,7 @@ iframe{
     width: 100%;
     background-color: #1b1e21;
     color: white;
+    overflow: scroll;
+    box-sizing: content-box;
 }
 

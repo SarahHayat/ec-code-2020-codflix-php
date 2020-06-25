@@ -13,12 +13,16 @@ ob_start();
 
 </head>
 <?php
-
+/**
+ * SET the history to the dataBase
+ */
 $id_media = isset($_GET['media']) ? $_GET['media'] : null;
 $saison_id = isset($_GET['saison']) ? $_GET['saison'] : null;
-
-
 History::setHistory($_SESSION['user_id'], $id_media, $saison_id);
+
+/**
+ * Sow serie's episodes detail
+ */
 ?>
 <div id="contenue">
 

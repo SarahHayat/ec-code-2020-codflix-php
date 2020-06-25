@@ -141,7 +141,7 @@ class Media
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT genre.*, media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media from media join genre on media.genre_id = genre.id WHERE media.id = ?');
+        $req = $db->prepare('SELECT genre.*, media.*, DATE_FORMAT(media.release_date,"%d-%m-%Y" ) as release_date,DATE_FORMAT(media.duration, "%Hh%i") as time_media from media join genre on media.genre_id = genre.id WHERE media.id = ?');
         $req->execute(array($id));
 
         // Close databse connection
@@ -170,7 +170,7 @@ class Media
 // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT saisons.*, media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media FROM media join saisons ON saisons.media_id = media.id where media.id= ? LIMIT 1');
+        $req = $db->prepare('SELECT saisons.*, media.*, DATE_FORMAT(media.release_date,"%d-%m-%Y" ) as release_date, DATE_FORMAT(media.duration, "%Hh%i") as time_media FROM media join saisons ON saisons.media_id = media.id where media.id= ? LIMIT 1');
         $req->execute(array($id_media));
 
         // Close databse connection

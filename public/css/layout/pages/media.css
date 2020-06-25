@@ -48,7 +48,6 @@
 
 .media-list .item:hover {
     text-decoration: none;
-    border: solid red 1px;
 }
 
 .media-list .item .summary {
@@ -58,6 +57,7 @@
 }
 .media-list .list {
     display: flex;
+    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {

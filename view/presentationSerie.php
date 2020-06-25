@@ -30,11 +30,11 @@ $id_media = isset($_GET['media']) ? $_GET['media'] : null;
         <div class="video_summary">
             <div class="video_episode"> <iframe  height="250px" width="450px" allowfullscreen="" frameborder="0"
                                                  src="<?= $item['trailer_url']; ?>"></iframe></div>
-            <div> Title : <?=  $item['title']?></div>
-            <div> Genre : <?=  $item['type']?></div>
-            <div> Durée : <?=  $item['time_media']?></div>
-            <div> Release Date : <?=  $item['release_date']?></div>
-            <div> Summary : <?=  $item['summary']?></div>
+            <div><span>Titre :</span> <?=  $item['title']?></div>
+            <div><span> Genre : </span><?=  $item['type']?></div>
+            <div><span> Durée : </span><?=  $item['time_media']?></div>
+            <div><span> Date de sortie : </span><?=  $item['release_date']?></div>
+            <div> <span>Resumé : </span><?=  $item['summary']?></div>
 
         </div>
     <?php endforeach; ?>

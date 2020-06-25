@@ -26,11 +26,14 @@
     </div>
 </div>
 <?php
+/**
+ * search function
+ */
 $search = isset($_GET['title']) ? htmlspecialchars($_GET['title']) : null;
 $searchs = Media::filterMedias($search);
 
 
-if (isset($search) && strlen($search) > 0) {
+if (isset($search) && strlen($search) > 0 && $searchs != 0) {
 
     ?>
     <div class="media-list">
@@ -41,36 +44,36 @@ if (isset($search) && strlen($search) > 0) {
                 foreach ($searchs as $media) {
                 if ($media['type'] == "film") { ?>
                 <a class="item" href="index.php?action=film&media=<?= $media['id']; ?>">
-<!--                <a class="item" href="view/detailFilm.php?media=--><?//= $media['id']; ?><!--">-->
                     <?php
                     }else{ ?>
                     <a class="item" href="index.php?action=detailSerie&media=<?= $media['id']; ?>">
-<!--                    <a class="item" href="view/detailSaison.php?media=--><?//= $media['id']; ?><!--">-->
                         <?php
                         }
                         ?>
-<!--                        <a class="item" href="view/detailFilm.php?media=--><?//= $media['id']; ?><!--">-->
-                            <!--                    <div id="player"></div>-->
-                            <div>
-                                <iframe allowfullscreen="" frameborder="0" allow="picture-in-picture"
-                                        src="<?= $media['trailer_url']; ?>"></iframe>
-                            </div>
-                            <form action="">
-                                <input type="hidden" value="" name="time" id="time">
-                            </form>
+                        <div>
+                            <iframe allowfullscreen="" frameborder="0" allow="picture-in-picture"
+                                    src="<?= $media['trailer_url']; ?>"></iframe>
+                        </div>
+                        <form action="">
+                            <input type="hidden" value="" name="time" id="time">
+                        </form>
 
-                            <div class="title"><?= $media['title'] . " (" . $media['release_date'] . ")" ?></div>
-                            <div class="title"><?= $media['time_media'] ?></div>
-                        </a>
-                        <?php
-                        }
-                        ?>
+                        <div class="title"><?= $media['title'] . " (" . $media['release_date'] . ")" ?></div>
+                        <div class="title"><?= $media['time_media'] ?></div>
+                    </a>
+                    <?php
+                    }
+                    ?>
             </div>
         </div>
     </div>
     <?php
 }
+/**
+ * Films
+ */
 ?>
+
 <div class="media-list">
     <div>
         <h1>FILMS</h1>
@@ -98,6 +101,11 @@ if (isset($search) && strlen($search) > 0) {
             ?></div>
     </div>
     <div>
+        <?php
+        /**
+         * Series
+         */
+        ?>
         <h1>SÉRIES</h1>
         <div class="list">
             <?php
@@ -123,7 +131,6 @@ if (isset($search) && strlen($search) > 0) {
         </div>
     </div>
 </div>
-<script scr="https://www.youtube.com/iframe_api"></script>
 <script src="public/js/media.js"></script>
 
 
