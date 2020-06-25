@@ -15,15 +15,15 @@ ob_start(); ?>
 
 <div class="media-list">
     <h1>HISTORIQUE</h1>
-    <div>
+    <div id="contenu">
         <?php
         $id_user = $_SESSION['user_id'];
         $historys = Media::getHistoryByUser($id_user);
         foreach ($historys as $history) {
             $id_history = $history['id'];
             ?>
-            <div><?= "À " . $history["start_date"] . ", vous avez regardé " . $history['title'] . " ." ?></div>
-            <a > supprimer</a>
+            <div><?= "Le " . $history["start_date"] . ", vous avez regardé " . $history['title'] . " ." ?></div>
+            <a type="button" href="index.php?action=deleteDistinct&id_history=<?=$id_history ?>">supprimer</a>
             <?php
         }
         ?>
@@ -31,7 +31,7 @@ ob_start(); ?>
     </div>
 </div>
 
-
+<script src="public/js/media.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('dashboard.php'); ?>

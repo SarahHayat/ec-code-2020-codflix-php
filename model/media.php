@@ -156,7 +156,7 @@ class Media
 // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('SELECT DISTINCT saisons.`name_saison`, saisons.id_saison, saisons.summary_saison, media.summary FROM saisons join media ON saisons.media_id = media.id where media.id= ?');
+        $req = $db->prepare('SELECT saisons.*, media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media FROM media join saisons ON saisons.media_id = media.id where media.id= ?');
         $req->execute(array($id_media));
 
         // Close databse connection
@@ -164,6 +164,19 @@ class Media
 
         return $req->fetchAll();
 
+    }
+    public static function getSummarySaison($id_media){
+
+// Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('SELECT saisons.*, media.*, DATE_FORMAT(media.duration, "%Hh%i") as time_media FROM media join saisons ON saisons.media_id = media.id where media.id= ? LIMIT 1');
+        $req->execute(array($id_media));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
     }
 
     public static function getSerieEpisodeBySaison($id_saison, $id_media)

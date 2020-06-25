@@ -12,36 +12,37 @@
     <link href="public/css/layout/layout.css" rel="stylesheet"/>
 
 </head>
+<?php
+$id_media = $_GET['media'];
+?>
 
 <div class="media-list">
-    <?php
-    $id_media = $_GET['media'];
-    ?>
-    <input id="id_media" type="hidden" value="<?= $id_media ?>">
-
     <nav>
         <ul id="menu">
             <li><a id="presentation">PRESENTATION</a></li>
             <li><a href="index.php?action=serie&media=<?= $id_media ?>" id="episodes">EPISODES</a></li>
         </ul>
     </nav>
-    <div class="video_summary"
-        <?php
-        $summary = Media::getSaisonByMedia($id_media);
-        foreach ($summary as $item) {
-            ?>
+    <?php
 
-
-            <div id="summary_saison"> <?= $item['summary'] ?></div>
-            <?php
-        }
+    $summary = Media::getSummarySaison($id_media);
+    foreach ($summary as $item):
         ?>
-    </div>
-</div>
+        <div class="video_summary">
+            <div class="video_episode"> <iframe  height="250px" width="450px" allowfullscreen="" frameborder="0"
+                                                 src="<?= $item['trailer_url']; ?>"></iframe></div>
+            <div> Title : <?=  $item['title']?></div>
+            <div> Genre : <?=  $item['type']?></div>
+            <div> Durée : <?=  $item['time_media']?></div>
+            <div> Release Date : <?=  $item['release_date']?></div>
+            <div> Summary : <?=  $item['summary']?></div>
 
-<script src="public/js/media.js"></script>
+        </div>
+    <?php endforeach; ?>
+</div>
 
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require('dashboard.php'); ?>
+<script src="public/js/media.js"></script>

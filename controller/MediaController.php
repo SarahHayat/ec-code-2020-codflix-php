@@ -20,7 +20,7 @@ function seriePage(){
 }
 
 function saisonPage(){
-    require ('view/saisonChose.php');
+    require('public/ajax/saisonChose.php');
 }
 
 function detailSeriePage(){

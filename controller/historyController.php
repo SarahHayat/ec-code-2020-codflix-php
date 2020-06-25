@@ -8,13 +8,13 @@ require_once('model/media.php');
 
 function history()
 {
-function deleteDistinctHistory($id_history){
-    Media::deleteDistinctHistory($id_history);
+
     require('view/historyView.php');
 
 }
 
-    require('view/historyView.php');
-
+function deleteDistinct()
+{
+    require('view/deleteDistinctHistory.php');
 }
 

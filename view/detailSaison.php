@@ -53,7 +53,7 @@ Media::setHistory($_SESSION['user_id'], $id_media);
             </div>
         </div>
     </div>
-    <script src="../public/js/media.js"></script>
+    <script src="public/js/media.js"></script>
 
 
 <?php $content = ob_get_clean(); ?>

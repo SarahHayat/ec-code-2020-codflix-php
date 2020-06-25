@@ -1,16 +1,3 @@
-function presentation() {
-    console.log('presentation');
-    var contenu_presentation = document.getElementById("contenu_presentation");
-    var episodes = document.getElementById('episodes');
-    episodes.addEventListener('click', function () {
-        if (getComputedStyle(contenu_presentation).display != "none") {
-            contenu_presentation.style.display = "none";
-        } else {
-            contenu_presentation.style.display = "block";
-        }
-    })
-
-}
 
 
 function myChoices() {
@@ -29,7 +16,29 @@ function myChoices() {
                 }
             }
         };
+        console.log("reponse : " + xmlhttp.responseText);
         xmlhttp.open("GET", 'index.php?action=saison&saison='+saison+'&media='+media , true);
+        xmlhttp.send();
+    }
+}
+
+function deleteDistinct(id_history) {
+
+    if (id_history === "NULL") {
+        document.getElementById("contenu").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    document.getElementById("contenu").innerHTML = this.responseText;
+                } else {
+                }
+            }
+        };
+        console.log("reponse : " + xmlhttp.responseText);
+        xmlhttp.open("GET", 'index.php?action=deleteDistinct&id_history='+id_history , true);
         xmlhttp.send();
     }
 }
@@ -63,5 +72,7 @@ function onPlayerStateChange(event) {
 }
 
 
-presentation();
+
+
+
 
