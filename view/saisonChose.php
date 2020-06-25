@@ -1,4 +1,6 @@
-<?php ob_start();
+<?php
+session_start();
+ob_start();
 require("../model/media.php");
 ?>
 <head>
@@ -14,7 +16,10 @@ require("../model/media.php");
 </head>
 <?php
 $saison_id = $_GET['saison'];
-$media_id = $_GET['media'];
+//$media_id = $_GET['media'];
+$id_media = $_GET['media'];
+
+Media::setHistory($_SESSION['user_id'], $id_media);
 ?>
 <div id="contenue">
 
@@ -39,13 +44,13 @@ $media_id = $_GET['media'];
         <!--        </select>-->
         <?php
 
-        if (isset($saison_id, $media_id)) {
-        $episodes = Media::getSerieEpisodeBySaison($saison_id, $media_id);
+        if (isset($saison_id, $id_media)) {
+        $episodes = Media::getSerieEpisodeBySaison($saison_id, $id_media);
         //echo 'SELECT episodes.*, saisons.* , DATE_FORMAT(episodes.time_episode, "%Hh%i") as time_media from episodes JOIN saisons ON saisons.id_saison = episodes.saison_id join media on media.id = saisons.media_id WHERE episodes.saison_id = "'.$saison_id.'" AND media.id = "'.$media_id.'"';
         foreach ($episodes  as $episode){
         ?>
 
-        <a class="item" href="view/detailFilm.php?media=<?= $episode['id']; ?>" style="display: inline;">
+        <a class="item" >
             <!--                    <div id="player"></div>-->
             <div>
                 <iframe allowfullscreen="" frameborder="0" allow="picture-in-picture"

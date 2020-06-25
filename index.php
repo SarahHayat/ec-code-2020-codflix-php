@@ -14,6 +14,7 @@ if (isset($_GET['action'])):
 
     switch ($_GET['action']):
 
+
         case 'login':
 
             if (!empty($_POST)) login($_POST);
@@ -40,15 +41,41 @@ if (isset($_GET['action'])):
 
         case 'media':
 
-            $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+            mediaPage();
 
-            if ($user_id) {
-                mediaPage();
-            } else {
-                homePage();
-            }
 
             break;
+
+        case 'film':
+
+            filmPage();
+
+
+            break;
+
+        case 'serie':
+
+            seriePage();
+
+
+            break;
+
+        case 'detailSerie':
+
+            detailSeriePage();
+
+
+            break;
+
+        case 'saison':
+            echo "action : " . $_GET['action'];
+
+
+            saisonPage();
+
+
+            break;
+
 
 
     endswitch;

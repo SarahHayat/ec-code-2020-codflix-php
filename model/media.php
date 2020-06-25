@@ -238,4 +238,18 @@ where history.user_id = ? order by history.start_date asc');
         return $req->fetchAll();
     }
 
+    public static function deleteDistinctHistory($id_history){
+        // Open database connection
+        $db = init_db();
+
+        $req = $db->prepare('DELETE FROM history WHERE id = ?');
+        $req->execute(array($id_history));
+
+        // Close databse connection
+        $db = null;
+
+        return $req->fetchAll();
+
+    }
+
 }

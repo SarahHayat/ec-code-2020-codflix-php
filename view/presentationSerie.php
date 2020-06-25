@@ -1,15 +1,15 @@
 <?php ob_start();
-require("../model/media.php");
+//require("../model/media.php");
 ?>
 <head>
     <meta charset="utf-8"/>
     <title>Cod'Flix</title>
 
-    <link href="../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../public/lib/font-awesome/css/all.min.css" rel="stylesheet"/>
+    <link href="public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="public/lib/font-awesome/css/all.min.css" rel="stylesheet"/>
 
-    <link href="../public/css/partials/partials.css" rel="stylesheet"/>
-    <link href="../public/css/layout/layout.css" rel="stylesheet"/>
+    <link href="public/css/partials/partials.css" rel="stylesheet"/>
+    <link href="public/css/layout/layout.css" rel="stylesheet"/>
 
 </head>
 
@@ -22,22 +22,24 @@ require("../model/media.php");
     <nav>
         <ul id="menu">
             <li><a id="presentation">PRESENTATION</a></li>
-            <li><a href="detailSaison.php?media=<?= $id_media ?>" id="episodes">EPISODES</a></li>
+            <li><a href="index.php?action=serie&media=<?= $id_media ?>" id="episodes">EPISODES</a></li>
         </ul>
     </nav>
     <div class="video_summary"
-    <?php
-    $summary = Media::getSaisonByMedia($id_media);
-    foreach ($summary as $item) {
-        ?>
-        <div id="summary_saison"> <?= $item['summary'] ?></div>
         <?php
-    }
-    ?>
-</div>
+        $summary = Media::getSaisonByMedia($id_media);
+        foreach ($summary as $item) {
+            ?>
+
+
+            <div id="summary_saison"> <?= $item['summary'] ?></div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
 
-<script src="../public/js/media.js"></script>
+<script src="public/js/media.js"></script>
 
 
 <?php $content = ob_get_clean(); ?>

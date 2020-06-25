@@ -17,9 +17,9 @@
             <div class="form-group has-btn">
 
                 <input type="search" id="search" name="title" class="form-control"
-                       placeholder="Rechercher un film ou une série" value="">
+                       placeholder="Rechercher un film ou une serie" value="">
 
-                <input type="submit" value="Valider " class="btn btn-block bg-red"/>
+                <button type="submit" class="btn btn-block bg-red">Valider</button>
 
             </div>
         </form>
@@ -40,10 +40,12 @@ if (isset($search) && strlen($search) > 0) {
                 <?php
                 foreach ($searchs as $media) {
                 if ($media['type'] == "film") { ?>
-                <a class="item" href="view/detailFilm.php?media=<?= $media['id']; ?>">
+                <a class="item" href="index.php?action=film&media=<?= $media['id']; ?>">
+<!--                <a class="item" href="view/detailFilm.php?media=--><?//= $media['id']; ?><!--">-->
                     <?php
                     }else{ ?>
-                    <a class="item" href="view/detailSaison.php?media=<?= $media['id']; ?>">
+                    <a class="item" href="index.php?action=detailSerie&media=<?= $media['id']; ?>">
+<!--                    <a class="item" href="view/detailSaison.php?media=--><?//= $media['id']; ?><!--">-->
                         <?php
                         }
                         ?>
@@ -79,7 +81,7 @@ if (isset($search) && strlen($search) > 0) {
 
             foreach ($medias as $media) {
                 if ($media['type'] == "film") { ?>
-                    <a class="item" href="view/detailFilm.php?media=<?= $media['id']; ?>">
+                    <a class="item" href="index.php?action=film&media=<?= $media['id']; ?>">
                         <!--                        <div id="player"></div>-->
                         <div>
                             <iframe allowfullscreen="" frameborder="0" allow="picture-in-picture"
@@ -104,7 +106,7 @@ if (isset($search) && strlen($search) > 0) {
 
             foreach ($medias as $media) {
                 if ($media['type'] == "serie") { ?>
-                    <a class="item" href="view/detailSaison.php?media=<?= $media['id']; ?>">
+                    <a class="item" href="index.php?action=detailSerie&media=<?= $media['id']; ?>">
                         <!--                        <div id="player"></div>-->
                         <div>
                             <iframe allowfullscreen="" frameborder="0"
