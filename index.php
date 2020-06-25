@@ -11,64 +11,54 @@ require_once('controller/historyController.php');
  ***************************/
 
 if (isset($_GET['action'])):
-    echo "action : " . $_GET['action'];
     switch ($_GET['action']):
 
 
         case 'login':
-            echo "action : " . $_GET['action'];
             if (!empty($_POST)) login($_POST);
             else loginPage();
 
             break;
 
         case 'signup':
-            echo "action : " . $_GET['action'];
             signupPage();
 
             break;
 
         case 'logout':
-            echo "action : " . $_GET['action'];
             logout();
 
             break;
         case 'history':
-            echo "action : " . $_GET['action'];
             history();
 
             break;
 
         case 'media':
-            echo "action : " . $_GET['action'];
             mediaPage();
 
 
             break;
 
         case 'film':
-            echo "action : " . $_GET['action'];
             filmPage();
 
 
             break;
 
         case 'serie':
-            echo "action : " . $_GET['action'];
             seriePage();
 
 
             break;
 
         case 'detailSerie':
-            echo "action : " . $_GET['action'];
             detailSeriePage();
 
 
             break;
 
         case 'saison':
-            echo "action : " . $_GET['action'];
 
            saisonPage();
 
@@ -77,8 +67,14 @@ if (isset($_GET['action'])):
 
         case 'deleteDistinct':
 
-            echo "action : " . $_GET['action'];
             deleteDistinct();
+
+
+            break;
+
+        case 'deleteAll':
+
+            deleteAll();
 
 
             break;

@@ -255,13 +255,23 @@ where history.user_id = ? order by history.start_date asc');
         // Open database connection
         $db = init_db();
 
-        $req = $db->prepare('DELETE FROM history WHERE id = ?');
-        $req->execute(array($id_history));
+        $req = $db->query('DELETE FROM history WHERE id_history = "'.$id_history.'"');
 
         // Close databse connection
         $db = null;
 
-        return $req->fetchAll();
+       $req->closeCursor();
+
+    }
+    public static function deleteAllHistory(){
+        // Open database connection
+        $db = init_db();
+
+        $req = $db->query('DELETE FROM history');
+
+        // Close databse connection
+        $db = null;
+
 
     }
 

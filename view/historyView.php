@@ -13,17 +13,23 @@ ob_start(); ?>
 </head>
 
 
-<div class="media-list">
-    <h1>HISTORIQUE</h1>
-    <div id="contenu">
+<div class="history">
+    <div class="history_title">
+        <h1>HISTORIQUE</h1>
+        <a href="index.php?action=deleteAll">tout supprimer</a>
+    </div>
+
+    <div class="contenu_history">
         <?php
         $id_user = $_SESSION['user_id'];
         $historys = Media::getHistoryByUser($id_user);
         foreach ($historys as $history) {
-            $id_history = $history['id'];
+            $id_history = $history['id_history'];
             ?>
+            <div class="detail-history">
             <div><?= "Le " . $history["start_date"] . ", vous avez regardé " . $history['title'] . " ." ?></div>
-            <a type="button" href="index.php?action=deleteDistinct&id_history=<?=$id_history ?>">supprimer</a>
+            <a href="index.php?action=deleteDistinct&id_history=<?=$id_history ?>">supprimer</a>
+            </div>
             <?php
         }
         ?>

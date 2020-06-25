@@ -48,6 +48,7 @@
 
 .media-list .item:hover {
     text-decoration: none;
+    border: solid red 1px;
 }
 
 .media-list .item .summary {

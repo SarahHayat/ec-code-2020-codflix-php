@@ -15,6 +15,11 @@ function history()
 
 function deleteDistinct()
 {
-    require('view/deleteDistinctHistory.php');
+    require('public/ajax/deleteDistinctHistory.php');
+}
+
+function deleteAll()
+{
+    require('public/ajax/deleteAllHistory.php');
 }
 
